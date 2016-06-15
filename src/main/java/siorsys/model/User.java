@@ -2,47 +2,53 @@ package siorsys.model;
 
 import org.springframework.stereotype.Component;
 
-@Component
+import javax.persistence.*;
+
+@Entity
+@Table(name="users")
 public class User {
 
-    private static String login;
-    private static String password;
-    private static String email;
-    private static long id;
+    private String login;
+    private String password;
+    private String email;
+    @Id
+    @GeneratedValue
+    @Column(name="id")
+    private long id;
 
     public User() {
     }
 
-    public static String getLogin() {
+    public String getLogin() {
         return login;
     }
 
-    public static void setLogin(String login) {
-        User.login = login;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
-    public static String getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public static void setPassword(String password) {
-        User.password = password;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public static String getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public static void setEmail(String email) {
-        User.email = email;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public static long getId() {
+    public long getId() {
         return id;
     }
 
-    public static void setId(long id) {
-        User.id = id;
+    public void setId(long id) {
+        this.id = id;
     }
 
     @Override
