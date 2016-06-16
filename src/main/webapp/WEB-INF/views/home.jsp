@@ -14,8 +14,8 @@
     <img src="http://rs826.pbsrc.com/albums/zz186/willisnowell/Gifs/monkey_making_funny_face_hg_clr.gif~c200"/>
     <br><br>
     <form method="post">
-        <input type="text" placeholder="Login"/><br>
-        <input type="password" placeholder="Password"/><br>
+        <input type="text" name="login" placeholder="Login"/><br>
+        <input type="password" name="pass" placeholder="Password"/><br>
         <div style="font-size: small">
             <input type="submit" value="Enter"/><input type="checkbox">Remember</input> <br>
         </div>
