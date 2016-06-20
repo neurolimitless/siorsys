@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="utf-8" session="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -8,18 +8,20 @@
     <meta charset='utf-8'>
     <title>Siorsys</title>
 </head>
-<body>
-<div id="some" align="center" ><h1>privet</h1>
+<body id="login-page">
+<br><br><br>
+<div id="login-form" ><h1>Welcome to Siorsys</h1>
     <br><br>
-    <img src="http://rs826.pbsrc.com/albums/zz186/willisnowell/Gifs/monkey_making_funny_face_hg_clr.gif~c200"/>
     <br><br>
+    <div class="panel-right">
     <form:form method="post" action="#">
         <input type="text" name="login" placeholder="Login"/><br>
         <input type="password" name="pass" placeholder="Password"/><br>
         <div style="font-size: small">
-            <input type="submit" value="Enter"/><input type="checkbox">Remember</input> <br>
+            <input type="submit" class="button" value="Enter"/><br>
         </div>
     </form:form>
+    </div>
     <br>
 </div>
 </body>

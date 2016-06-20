@@ -10,7 +10,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserDao userDao;
 
-
     @Override
     public void createUser(User user) {
         userDao.save(user);

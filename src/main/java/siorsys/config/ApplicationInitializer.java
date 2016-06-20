@@ -8,10 +8,15 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.context.WebApplicationContext;
 
-@SpringBootApplication
+
+@EnableAutoConfiguration
 @ComponentScan("siorsys")
-public class ApplicationInitializer extends SpringBootServletInitializer {
+@Configuration
+public class ApplicationInitializer extends SpringBootServletInitializer implements WebApplicationInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {

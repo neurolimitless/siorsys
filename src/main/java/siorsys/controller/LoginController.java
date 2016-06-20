@@ -1,7 +1,6 @@
 package siorsys.controller;
 
 import org.apache.tomcat.util.buf.HexUtils;
-import org.apache.tomcat.util.security.MD5Encoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,21 +28,21 @@ public class LoginController {
         if (request.getSession() != null) {
             if (request.getSession().getAttribute("user") != null) {
                 User user = (User) request.getSession().getAttribute("user");
-                if (user != null) return "main";
+                if (user != null) return "menu";
             }
         }
         return "home";
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public String login(HttpServletRequest request, HttpServletResponse response) {
-
+    public String login(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String login = request.getParameter("login");
         String hashedPass = hashMD5(request.getParameter("pass"));
         User user = userService.getUserByLogin(login);
         if (user != null && user.getPass().equals(hashedPass)) {
             request.getSession().setAttribute("user", user);
-            return "main";
+            response.sendRedirect("/menu");
+            return "menu";
         }
 
         return "home";
