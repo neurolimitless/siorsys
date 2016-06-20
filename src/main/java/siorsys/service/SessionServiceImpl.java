@@ -23,4 +23,11 @@ public class SessionServiceImpl implements SessionService{
             return (User) session.getAttribute("user");
         } return null;
     }
+
+    @Override
+    public boolean isUserAdmin(User user) {
+        return user != null && user.getRole().equals("admin");
+    }
+
+
 }

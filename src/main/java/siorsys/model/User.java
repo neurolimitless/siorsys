@@ -16,7 +16,16 @@ public class User {
     private String pass;
     @Column(name = "email")
     private String email;
+    @Column(name = "role")
+    private String role;
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public User() {
     }

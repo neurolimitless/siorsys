@@ -13,6 +13,10 @@ body, #content {
     height: 100%;
 }
 
+#content{
+    background-color: #7C6582;
+}
+
 #some {
     background-color: slategrey;
 }
@@ -72,10 +76,20 @@ body, #content {
     background-color: #FFF056;
 }
 
+hr{
+    height: 2px;
+    background-color: darkgoldenrod;
+    border: none;
+}
+
 #user input {
     width: 60%;
     height: 50%;
     font-size: 11px;
+}
+
+#navigation a{
+    background-color: #F2EAAA ;
 }
 
 span {
@@ -87,4 +101,8 @@ span {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+#element h3 {
+    margin: 8px;
 }
