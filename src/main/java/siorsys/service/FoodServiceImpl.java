@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import siorsys.dao.FoodDao;
 import siorsys.model.Food;
 
+import java.util.Collection;
 import java.util.List;
 
 @Service("foodManager")
@@ -36,5 +37,14 @@ public class FoodServiceImpl implements FoodService {
     @Override
     public List<Food> getAllFood() {
         return foodDao.getAllFood();
+    }
+
+    @Override
+    public double calculateTotal(Collection<Food> collection) {
+        double total = 0.0;
+        for (Food food : collection) {
+            total+=food.getPrice();
+        }
+        return total;
     }
 }

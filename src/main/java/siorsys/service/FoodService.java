@@ -2,6 +2,7 @@ package siorsys.service;
 
 import siorsys.model.Food;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface FoodService {
@@ -10,4 +11,5 @@ public interface FoodService {
     void save(Food food);
     void delete(Food food);
     List<Food> getAllFood();
+    double calculateTotal(Collection<Food> collection);
 }

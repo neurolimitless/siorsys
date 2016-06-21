@@ -48,24 +48,42 @@
         <div id="checkout">
             <br>
             <h5>Чек:</h5>
+            <c:out value="${cart.size()}"/> - позиций.<br>
+            Всего: <c:out value="${total}"/>
+            <c:choose>
+            <c:when test="${cart.size()<7}">
+            <c:forEach var="food" items="${cart}">
+                <br><c:out value="${food.title}"/>
+            </c:forEach>
+            </c:when>
+            </c:choose>
             <form action="/checkout">
                 <input type="submit" value="Показать чек"/>
             </form>
-            <input type="button" value="Обнулить чек"/>
+            <form action="/clear-cart">
+                <input type="submit" value="Обнулить чек"/>
+            </form>
+
         </div>
     </div>
     <div id="menu">
         <c:forEach var="item" items="${menu}">
             <div id="element">
-                <h3><c:out value="${item.title}"/></h3>
-                <img width="250px" height="167px" src="<c:url value="/resources/images/${item.image}"/>"/><br>
+                <form method="post" action="addProduct-${item.id}">
+                <h3 id="name"><c:out value="${item.title}"/></h3>
+                <button>
+                    <img width="250px" height="167px" src="<c:url value="/resources/images/${item.image}"/>"/>
+                </button><br>
                     <%--Стоимость: <c:out value="${item.price}"/><br>--%>
                     <%--В наличии: <c:out value="${item.count}"/><br>--%>
                     <%--Ингридиенты: <c:out value="${item.ingredients}"/><br>--%>
+
+                </form>
             </div>
         </c:forEach>
     </div>
 </div>
 </body>
 <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/style.css"/>"/>
+<link type="text/css" rel="script" href="<c:url value="/resources/js/script.js"/>"/>
 </html>

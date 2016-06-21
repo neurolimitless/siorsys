@@ -1,3 +1,4 @@
 .idea
 Siorsys.iml
 target
+*.jar
