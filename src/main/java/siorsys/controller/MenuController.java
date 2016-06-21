@@ -37,7 +37,6 @@ public class MenuController {
             User currentUser = sessionService.getUserFromSession(currentSession);
             map.addAttribute("menu", foodService.getAllFood());
             map.addAttribute("username", currentUser.getName());
-
             if (sessionService.isUserAdmin(currentUser)) map.addAttribute("admin", true);
             return "menu";
         }
