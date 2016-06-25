@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 @Controller
 @SessionAttributes("user")
@@ -25,6 +28,8 @@ public class LoginController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(HttpServletRequest request) {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        System.out.println(request.getRemoteAddr() + " " + dateFormat.format(Calendar.getInstance().getTime()));
         if (request.getSession() != null) {
             if (request.getSession().getAttribute("user") != null) {
                 User user = (User) request.getSession().getAttribute("user");

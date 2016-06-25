@@ -5,6 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <meta charset='utf-8'>
     <title>Siorsys</title>
 </head>
@@ -13,7 +14,6 @@
 <div id="content">
     <div id="panel">
         <div id="user">
-
             <span>Logged as: </span>
             <c:choose>
                 <c:when test="${admin}">
@@ -23,14 +23,13 @@
                     <c:out value="${username}"/>
                 </c:otherwise>
             </c:choose>
-
             <br>
             <form action="/logout"><br>
-                <input type="submit" value="Logout"/>
+                <input type="submit" class="agreebtn" value="Logout"/>
             </form>
             <br>
             <form action="/getinfo">
-                <input type="button" value="Info"/>
+                <input type="button" class="agreebtn" value="Info"/>
             </form>
             <br>
         </div>
@@ -51,17 +50,43 @@
             <c:out value="${cart.size()}"/> - позиций.<br>
             Всего: <c:out value="${total}"/>
             <c:choose>
-            <c:when test="${cart.size()<7}">
-            <c:forEach var="food" items="${cart}">
-                <br><c:out value="${food.title}"/>
-            </c:forEach>
-            </c:when>
+                <c:when test="${cart.size()<7}">
+                    <c:forEach var="food" items="${cart}">
+                        <br><c:out value="${food.title}"/>
+                    </c:forEach>
+                </c:when>
             </c:choose>
-            <form action="/checkout">
-                <input type="submit" value="Показать чек"/>
-            </form>
+            <div id="check" class="modal">
+                <form class="modal-content animate" action="#">
+                    <div class="container" style="background-color: #f1f1f1">
+                        <br>
+                        <c:forEach var="item" items="${cart}">
+                            <div class="chelement">
+                                    <span class="name">
+                                        <c:out value="${item.title}"/>
+                                    </span>
+                                    <span class="price">
+                                    <c:out value="${item.price}"/> грн.<br>
+                                        </span>
+                            </div>
+                        </c:forEach>
+                        <br>
+                        <hr>
+                        <br>
+                        Всего к оплате: <strong><c:out value="${total}"/> </strong> грн.
+                        <br><br>
+                        <button type="button" class="agreebtn" onclick="">Оформить</button>
+                        <button type="button" class="cancelbtn"
+                                onclick="document.getElementById('check').style.display='none'">Закрыть
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+            <button type="button" onclick="document.getElementById('check').style.display='block'"> Показать чек
+            </button>
             <form action="/clear-cart">
-                <input type="submit" value="Обнулить чек"/>
+                <input type="submit" class="cancelbtn" style="width: 100%" value="Обнулить чек"/>
             </form>
 
         </div>
@@ -69,21 +94,37 @@
     <div id="menu">
         <c:forEach var="item" items="${menu}">
             <div id="element">
-                <form method="post" action="addProduct-${item.id}">
-                <h3 id="name"><c:out value="${item.title}"/></h3>
-                <button>
-                    <img width="250px" height="167px" src="<c:url value="/resources/images/${item.image}"/>"/>
-                </button><br>
-                    <%--Стоимость: <c:out value="${item.price}"/><br>--%>
-                    <%--В наличии: <c:out value="${item.count}"/><br>--%>
-                    <%--Ингридиенты: <c:out value="${item.ingredients}"/><br>--%>
+                <div class="tooltip">
+                <h3><c:out value="${item.title}"/></h3>
+                  <span class="tooltiptext">
+                       <span style="float:left;"> Стоимость: </span><c:out value="${item.price}"/><br>
+                        <span style="float:left;"> В наличии:</span> <c:out value="${item.count}"/><br>
+                        <span style="float:left;"> Ингридиенты: <c:out value="${item.ingredients}"/></span><br>
+                   </span>
+                </div>
+                <form action="addProduct-${item.id}" method="post">
+                    <button id="img" style="padding: 0">
+                        <img width="250px" height="167px" src="<c:url value="/resources/images/${item.image}"/>"/>
 
+                    </button>
+                    <br>
                 </form>
+
             </div>
         </c:forEach>
     </div>
 </div>
+<script>
+    var modal = document.getElementById('check');
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    };
+
+</script>
 </body>
+<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/modal.css"/>"/>
 <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/style.css"/>"/>
 <link type="text/css" rel="script" href="<c:url value="/resources/js/script.js"/>"/>
 </html>
