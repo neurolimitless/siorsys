@@ -26,16 +26,21 @@ public class FoodDaoImpl extends AbstractDao implements FoodDao {
 
     @Transactional
     public Food getFoodById(int id) {
-        return (Food)getByRestriction("id",id,Food.class);
+        return (Food) getByRestriction("id", id, Food.class).get(0);
     }
 
     @Transactional
     public Food getFoodByTitle(String title) {
-        return (Food)getByRestriction("title",title,Food.class);
+        return (Food) getByRestriction("title", title, Food.class).get(0);
     }
 
     @Transactional
     public List<Food> getAllFood() {
         return getAll(Food.class);
+    }
+
+    @Transactional
+    public List<Food> getFoodByType(int type) {
+        return getByRestriction("type", type, Food.class);
     }
 }

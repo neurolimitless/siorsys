@@ -28,6 +28,7 @@ CREATE TABLE `food` (
   `ingredients` mediumtext,
   `price` double DEFAULT NULL,
   `count` int(11) DEFAULT NULL,
+  `type` int(11) DEFAULT NULL,
   `total_ordered` int(11) DEFAULT NULL,
   `image` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -40,7 +41,7 @@ CREATE TABLE `food` (
 
 LOCK TABLES `food` WRITE;
 /*!40000 ALTER TABLE `food` DISABLE KEYS */;
-INSERT INTO `food` VALUES (1,'Борщ','Свекла:Картофель:Морковь:Лук',13.5,2,0,'borsch.jpg'),(2,'Картофельное пюре','Картофель:Масло',8,3,0,'pyure.jpg'),(3,'Оливье','Картофель:Яйца:Морковь:Горох:Майонез',11,1,0,'olivye.jpg'),(4,'Цезарь','',15,1,0,'caesar.jpg'),(5,'Грецкий салат','',15,1,0,'greckiy.jpg');
+INSERT INTO `food` VALUES (1,'Борщ','Свекла:Картофель:Морковь:Лук',13.5,2,1,0,'borsch.jpg'),(2,'Картофельное пюре','Картофель:Масло',8,3,2,0,'pyure.jpg'),(3,'Оливье','Картофель:Яйца:Морковь:Горох:Майонез',11,1,3,0,'olivye.jpg'),(4,'Цезарь','',15,1,3,0,'caesar.jpg'),(5,'Греческий салат','',15,1,3,0,'greckiy.jpg');
 /*!40000 ALTER TABLE `food` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -106,4 +107,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-06-21 10:25:51
+-- Dump completed on 2016-06-25  6:06:14

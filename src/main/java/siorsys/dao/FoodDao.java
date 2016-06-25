@@ -11,4 +11,6 @@ public interface FoodDao {
     Food getFoodById(int id);
     Food getFoodByTitle(String title);
     List<Food> getAllFood();
+
+    List<Food> getFoodByType(int type);
 }

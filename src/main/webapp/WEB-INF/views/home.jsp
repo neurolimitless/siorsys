@@ -8,22 +8,25 @@
     <meta charset='utf-8'>
     <title>Siorsys</title>
 </head>
-<body id="login-page">
-<br><br><br>
-<div id="login-form" ><h1>Welcome to Siorsys</h1>
-    <br><br>
-    <br><br>
-    <div class="panel-right">
-    <form:form method="post" action="#">
-        <input type="text" name="login" placeholder="Login"/><br>
-        <input type="password" name="pass" placeholder="Password"/><br>
-        <div style="font-size: small">
-            <input type="submit" class="button" value="Enter"/><br>
+<body>
+<div class="main">
+    <div class="login-form">
+        <h1>Welcome</h1>
+        <div class="head">
+            <img src="<c:url value="/resources/images/user.png"/>"/>
         </div>
-    </form:form>
+        <form action="#" method="post">
+            <input name="login" type="text" class="text" value="USERNAME" onfocus="this.value = '';"
+                   onblur="if (this.value == '') {this.value = 'USERNAME';}">
+            <input name="pass" type="password" value="Password" onfocus="this.value = '';"
+                   onblur="if (this.value == '') {this.value = 'Password';}">
+            <div class="submit">
+                <input type="submit" value="LOGIN">
+            </div>
+            <p><a href="#">Forgot Password ?</a></p>
+        </form>
     </div>
-    <br>
 </div>
 </body>
-<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/style.css"/>"/>
+<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/login-style.css"/>"/>
 </html>

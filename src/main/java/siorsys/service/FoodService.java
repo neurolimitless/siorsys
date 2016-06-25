@@ -11,5 +11,7 @@ public interface FoodService {
     void save(Food food);
     void delete(Food food);
     List<Food> getAllFood();
+
+    List<Food> getFoodByType(int type);
     double calculateTotal(Collection<Food> collection);
 }

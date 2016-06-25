@@ -40,11 +40,18 @@ public class FoodServiceImpl implements FoodService {
     }
 
     @Override
+    public List<Food> getFoodByType(int type) {
+        return foodDao.getFoodByType(type);
+    }
+
+    @Override
     public double calculateTotal(Collection<Food> collection) {
         double total = 0.0;
         for (Food food : collection) {
-            total+=food.getPrice();
+            total += food.getPrice();
         }
         return total;
     }
+
+
 }

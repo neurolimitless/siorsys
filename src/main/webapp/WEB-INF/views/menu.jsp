@@ -37,12 +37,12 @@
         <hr>
         <br>
         <div id="navigation">
-            <a href="/load-complex">Комплексные обеды</a><br> <br>
-            <a href="/load-first">Первое</a><br> <br>
-            <a href="/load-second">Второе</a><br> <br>
-            <a href="/load-salads">Салаты</a><br> <br>
-            <a href="/load-drink">Напитки</a><br> <br>
-            <a href="/load-other">Дополнительное</a><br> <br>
+            <a href="/menu?type=0">Комплексные обеды</a><br> <br>
+            <a href="/menu?type=1">Первое</a><br> <br>
+            <a href="/menu?type=2">Второе</a><br> <br>
+            <a href="/menu?type=3">Салаты</a><br> <br>
+            <a href="/menu?type=4">Напитки</a><br> <br>
+            <a href="/menu?type=5">Дополнительное</a><br> <br>
         </div>
         <hr>
         <div id="checkout">

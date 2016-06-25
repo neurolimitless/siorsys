@@ -25,12 +25,9 @@ public abstract class AbstractDao<PK extends Serializable, T> {
         getSession().delete(entity);
     }
 
-    public T getByRestriction(String restriction, Object restrictionValue, Class objectClass) {
-        List<T> list = getSession().createCriteria(objectClass)
-                .add(Restrictions.eq(restriction, restrictionValue))
-                .list();
-        if (list.size() != 0) return list.get(0);
-        else return null;
+    public List<T> getByRestriction(String restriction, Object restrictionValue, Class objectClass) {
+        return getSession().createCriteria(objectClass)
+                .add(Restrictions.eq(restriction, restrictionValue)).list();
     }
 
     public List<T> getAll(Class objectClass) {

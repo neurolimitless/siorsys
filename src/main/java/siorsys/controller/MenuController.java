@@ -29,13 +29,16 @@ public class MenuController {
     public String menu(
             HttpServletRequest request,
             HttpServletResponse response,
-            ModelMap map) throws Exception {
+            ModelMap map, @RequestParam(name = "type", defaultValue = "0", required = false) int type) throws Exception {
         HttpSession currentSession = request.getSession(false);
         if (sessionService.isValidSession(currentSession)) {
             if (!map.containsAttribute("cart")) map.addAttribute("cart", new ArrayList<Food>());
             else map.addAttribute("total", foodService.calculateTotal((List<Food>) currentSession.getAttribute("cart")));
             User currentUser = sessionService.getUserFromSession(currentSession);
-            map.addAttribute("menu", foodService.getAllFood());
+            if (type == 0)
+                map.addAttribute("menu", foodService.getAllFood());
+            else map.addAttribute("menu", foodService.getFoodByType(type));
+
             map.addAttribute("username", currentUser.getName());
             if (sessionService.isUserAdmin(currentUser)) map.addAttribute("admin", true);
             return "menu";
@@ -69,4 +72,5 @@ public class MenuController {
         map.addAttribute("cart", new ArrayList<Food>());
         return "redirect:menu";
     }
+
 }

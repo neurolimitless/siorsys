@@ -21,6 +21,16 @@ public class Food {
     private int totalOrdered;
     @Column(name = "image")
     private String image;
+    @Column(name = "type")
+    private int type;
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 
     public Food() {
     }
