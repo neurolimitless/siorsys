@@ -50,7 +50,7 @@
             <c:out value="${cart.size()}"/> - позиций.<br>
             Всего: <c:out value="${total}"/>
             <c:choose>
-                <c:when test="${cart.size()<7}">
+                <c:when test="${cart.size()<6}">
                     <c:forEach var="food" items="${cart}">
                         <br><c:out value="${food.title}"/>
                     </c:forEach>

@@ -28,22 +28,17 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
 
     @Transactional
     public User getUserById(int id) {
-        List<User> users = getSession().createCriteria(User.class)
-                .add(Restrictions.eq("id", id))
-                .list();
-        if (users.size() != 0)
-            return users.get(0);
-        else return null;
+        return (User) getByRestriction("id",id,User.class).get(0);
     }
 
     @Transactional
-    public User getUserByName(String name) {
-        List<User> users = getSession().createCriteria(User.class)
-                .add(Restrictions.eq("name", name))
-                .list();
-        if (users.size() != 0)
-            return users.get(0);
-        else return null;
+    public User getUserByLogin(String login) {
+         return (User) getByRestriction("login",login,User.class).get(0);
+    }
+
+    @Transactional
+    public List<User> getAllUsers(){
+        return getAll(User.class);
     }
 
 }

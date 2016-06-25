@@ -5,8 +5,11 @@ import org.springframework.stereotype.Service;
 import siorsys.dao.UserDao;
 import siorsys.model.User;
 
+import java.util.List;
+
 @Service("userManager")
 public class UserServiceImpl implements UserService {
+
     @Autowired
     UserDao userDao;
 
@@ -22,6 +25,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByLogin(String login) {
-        return userDao.getUserByName(login);
+        return userDao.getUserByLogin(login);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userDao.getAllUsers();
     }
 }

@@ -92,6 +92,27 @@ hr{
     background-color: #F2EAAA;
 }
 
+td{
+    display: table-cell;
+    vertical-align: inherit;
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: #232323;
+    color:darkgray;
+    font-family: sans-serif;
+}
+
+th{
+    border: 1px solid black;
+    background-color: #151515;
+    color: goldenrod;
+}
+
+
+table{
+    width: 70%;
+}
+
 span {
     font-size: 11px;
 }

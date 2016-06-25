@@ -10,8 +10,12 @@ public class User {
     @GeneratedValue
     @Column(name = "id")
     private long id;
-    @Column(name = "name")
-    private String name;
+    @Column(name = "login")
+    private String login;
+    @Column(name = "first_name")
+    private String firstName;
+    @Column(name = "last_name")
+    private String lastName;
     @Column(name = "pass")
     private String pass;
     @Column(name = "email")
@@ -30,13 +34,7 @@ public class User {
     public User() {
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getPass() {
         return pass;
@@ -70,7 +68,9 @@ public class User {
         User user = (User) o;
 
         if (id != user.id) return false;
-        if (name != null ? !name.equals(user.name) : user.name != null) return false;
+        if (login != null ? !login.equals(user.login) : user.login != null) return false;
+        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
         if (pass != null ? !pass.equals(user.pass) : user.pass != null) return false;
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
         return role != null ? role.equals(user.role) : user.role == null;
@@ -80,10 +80,36 @@ public class User {
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (login != null ? login.hashCode() : 0);
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (pass != null ? pass.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

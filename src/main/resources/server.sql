@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.12, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.26, for Win64 (x86_64)
 --
 -- Host: localhost    Database: siorsys
 -- ------------------------------------------------------
--- Server version	5.7.12-0ubuntu1
+-- Server version	5.6.26
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -80,12 +80,14 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(16) DEFAULT NULL,
+  `login` varchar(32) DEFAULT NULL,
+  `first_name` varchar(32) DEFAULT NULL,
+  `last_name` varchar(32) DEFAULT NULL,
   `pass` varchar(128) DEFAULT NULL,
   `email` varchar(64) DEFAULT NULL,
   `role` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,7 +96,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'root','1a1dc91c907325c69271ddf0c944bc72','admin@admin.com','admin'),(2,'user','1a1dc91c907325c69271ddf0c944bc72','dXNlckBtYWlsLmNvbQ==','user');
+INSERT INTO `users` VALUES (1,'root','Алексей','Степаненко','1a1dc91c907325c69271ddf0c944bc72','admin@admin.com','admin'),(2,'user','Алексей','Степаненко','1a1dc91c907325c69271ddf0c944bc72','dXNlckBtYWlsLmNvbQ==','user');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -107,4 +109,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-06-25  6:06:14
+-- Dump completed on 2016-06-25 11:29:45

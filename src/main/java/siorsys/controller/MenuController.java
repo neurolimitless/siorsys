@@ -9,6 +9,7 @@ import siorsys.model.Food;
 import siorsys.model.User;
 import siorsys.service.FoodService;
 import siorsys.service.SessionService;
+import siorsys.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,6 +25,8 @@ public class MenuController {
     FoodService foodService;
     @Autowired
     SessionService sessionService;
+    @Autowired
+    UserService userService;
 
     @RequestMapping("/menu")
     public String menu(
@@ -39,7 +42,7 @@ public class MenuController {
                 map.addAttribute("menu", foodService.getAllFood());
             else map.addAttribute("menu", foodService.getFoodByType(type));
 
-            map.addAttribute("username", currentUser.getName());
+            map.addAttribute("username", currentUser.getLogin());
             if (sessionService.isUserAdmin(currentUser)) map.addAttribute("admin", true);
             return "menu";
         }
@@ -52,6 +55,8 @@ public class MenuController {
                         HttpServletRequest request,
                         ModelMap map) throws Exception {
         if (sessionService.isUserAdmin(sessionService.getUserFromSession(request.getSession()))) {
+            map.addAttribute("food", foodService.getAllFood());
+            map.addAttribute("users", userService.getAllUsers());
             return "admin";
         }
         response.sendRedirect("/");
