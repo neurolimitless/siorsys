@@ -54,12 +54,12 @@ DROP TABLE IF EXISTS `orders`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ordered` text,
+  `ordered` mediumtext COLLATE utf8_unicode_ci,
   `total` double DEFAULT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `created` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,6 +68,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (1,'Борщ',13.5,'2016-07-01 18:36:39',1),(2,'Борщ',21.5,'2016-07-01 18:45:25',1),(3,'Картофельное пюре:Борщ:Борщ',35,'2016-07-01 18:50:36',1),(4,'Борщ',13.5,'2016-07-01 18:52:33',1),(5,'Борщ',13.5,'2016-07-01 18:53:58',1),(6,'Картофельное пюре',15,'2016-07-01 18:55:18',1),(7,'Картофельное пюре',8,'2016-07-01 18:56:13',1),(8,'Борщ',13.5,'2016-07-01 19:09:08',1),(9,'Борщ',13.5,'2016-07-01 19:09:40',1),(10,'Борщ',13.5,'2016-07-01 19:11:47',1),(11,'Борщ',13.5,'2016-07-01 19:21:42',1);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,4 +110,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-06-25 11:29:45
+-- Dump completed on 2016-07-03 21:51:32

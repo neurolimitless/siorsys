@@ -1,6 +1,7 @@
 package siorsys.dao;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import siorsys.model.Order;
 
 import java.util.List;
@@ -22,9 +23,9 @@ public class OrderDaoImpl extends AbstractDao implements OrderDao {
         return (Order) getByRestriction("creator",id,Order.class);
     }
 
-    @Override
+    @Transactional
     public void save(Order order) {
-        persist(order);
+        super.save(order);
     }
 
     @Override

@@ -28,15 +28,10 @@
                 <input type="submit" class="agreebtn" value="Logout"/>
             </form>
             <br>
-            <form action="/getinfo">
-                <input type="button" class="agreebtn" value="Info"/>
-            </form>
-            <br>
         </div>
         <hr>
         <br>
         <div id="navigation">
-            <a href="/menu?type=0">Комплексные обеды</a><br> <br>
             <a href="/menu?type=1">Первое</a><br> <br>
             <a href="/menu?type=2">Второе</a><br> <br>
             <a href="/menu?type=3">Салаты</a><br> <br>
@@ -75,7 +70,7 @@
                         <br>
                         Всего к оплате: <strong><c:out value="${total}"/> </strong> грн.
                         <br><br>
-                        <button type="button" class="agreebtn" onclick="">Оформить</button>
+                        <button type="button" class="agreebtn" onclick="window.location.href='/checkout'">Оформить</button>
                         <button type="button" class="cancelbtn"
                                 onclick="document.getElementById('check').style.display='none'">Закрыть
                         </button>
